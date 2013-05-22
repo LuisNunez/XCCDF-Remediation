@@ -17,6 +17,7 @@
     <reference href="http://iase.disa.mil/stigs/net_perimeter/network_infra/routers_switches.html">
         DISA Network Infrastructure Router STIG.
     </reference>
+    <!-- The plain-text element provides the content for substitution in the fix element -->
     <plain-text id="banner_legalese">You are accessing a U.S. Government (USG) Information System (IS) that is provided 
         for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions:
         
@@ -34,15 +35,23 @@
         See User Agreement for details.
     </plain-text>
     
-    <version>.1</version>
+    <version>.2</version>
     <Group id="xccdf_org.mitre_group_2">
-        <Rule id="xccdf_org.mitre_rule_ios_banner2" >
-            <fixtext fixref="fix_ios_banner" reboot="false" >Enable and configure Cisco IOS with the banner motd command and input the proper legalese 
+        <Rule id="xccdf_org.mitre_rule_ios_banner2">
+            <description>Two Examples:
+                First fix example provides a basic command line for configuring the banner message.
+                Second fix example uses the substitution (sub) in the fix element</description>
+            <fixtext fixref="first_fix_ios_banner" reboot="false">Enable and configure Cisco IOS with the banner motd command and input the proper legalese 
             </fixtext>
-            <fix id="fix_ios_banner" reboot="false" system="urn:xccdf:fix:commands" complexity="low" disruption="low" strategy="configure" platform="cpe:/o:cisco:ios:15.1">
+            <fixtext fixref="second_fix_ios_banner" reboot="false">Enable and configure Cisco IOS with the banner motd command and input the proper legalese 
+            </fixtext>
+            <!-- First - basic fix example -->
+            <fix id="first_fix_ios_banner" reboot="false" system="urn:xccdf:fix:commands" complexity="low" disruption="low" strategy="configure" platform="cpe:/o:cisco:ios:15.1">
                 banner motd ^Banner: Warning you are entering a restricted system.^</fix>
-            <fix id="fix_ios_banner1" reboot="false" system="urnxccdf:fix:script:tcl" complexity="low" strategy="configure" disruption="low" platform="cpe:/o:cisco:ios:12.4">banner motd <sub idref="banner_legalese"/></fix>
-            <check system="check_ios_banner" id="fix_ios_banner" ></check>
+            <!-- Second - fix example of sub idref -->
+            <fix id="second_fix_ios_banner" reboot="false" system="urnxccdf:fix:script:tcl" complexity="low" strategy="configure" 
+                disruption="low" platform="cpe:/o:cisco:ios:12.4">banner motd <sub idref="banner_legalese"/></fix>
+            <check system="check_ios_banner" id="check_ios_banner"></check>
         </Rule>
     </Group>     
 </Benchmark>
