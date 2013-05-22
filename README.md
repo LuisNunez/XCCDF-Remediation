@@ -1,0 +1,2 @@
+XCCDF Remediation example documents.
+ 
