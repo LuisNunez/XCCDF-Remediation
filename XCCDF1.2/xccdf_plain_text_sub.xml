@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Benchmark xmlns="http://checklists.nist.gov/xccdf/1.2" 
+    xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" 
+    xmlns:xhtml="http://www.w3.org/1999/xhtml" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:cpe="http://cpe.mitre.org/language/2.0" 
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:xccdf="http://checklists.nist.gov/xccdf/1.2"
+    id="xccdf_RM1_benchmark_org.mitre" xml:lang="en" 
+    xsi:schemaLocation="http://checklists.nist.gov/xccdf/1.2 http://scap.nist.gov/schema/xccdf/1.2/xccdf_1.2.xsd">   
+    <status date="2013-05-22">incomplete</status>
+    <title>XCCDF Plain-text and Sub examples</title>
+    <description xml:lang="us">XCCDF Remediation Example for Cisco IOS banner messages.  Based on DISA Network Infrastructure Router STIG.</description>
+    <reference href="http://scap.nist.gov/revision/1.2/#xccdf">
+        XCCDF: The Extensible configuration Checklist Description Format version 1.2
+    </reference>
+    <reference href="http://iase.disa.mil/stigs/net_perimeter/network_infra/routers_switches.html">
+        DISA Network Infrastructure Router STIG.
+    </reference>
+    <plain-text id="banner_legalese">You are accessing a U.S. Government (USG) Information System (IS) that is provided 
+        for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions:
+        
+        -The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to,
+        penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement
+        (LE), and counterintelligence (CI) investigations.
+        -At any time, the USG may inspect and seize data stored on this IS.
+        -Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may
+        be disclosed or used for any USG-authorized purpose.
+        -This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal 
+        benefit or privacy.
+        -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of 
+        the content of privileged communications, or work product, related to personal representation or services by attorneys, 
+        psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. 
+        See User Agreement for details.
+    </plain-text>
+    
+    <version>.1</version>
+    <Group id="xccdf_org.mitre_group_2">
+        <Rule id="xccdf_org.mitre_rule_ios_banner2" >
+            <fixtext fixref="fix_ios_banner" reboot="false" >Enable and configure Cisco IOS with the banner motd command and input the proper legalese 
+            </fixtext>
+            <fix id="fix_ios_banner" reboot="false" system="urn:xccdf:fix:commands" complexity="low" disruption="low" strategy="configure" platform="cpe:/o:cisco:ios:15.1">
+                banner motd ^Banner: Warning you are entering a restricted system.^</fix>
+            <fix id="fix_ios_banner1" reboot="false" system="urnxccdf:fix:script:tcl" complexity="low" strategy="configure" disruption="low" platform="cpe:/o:cisco:ios:12.4">banner motd <sub idref="banner_legalese"/></fix>
+            <check system="check_ios_banner" id="fix_ios_banner" ></check>
+        </Rule>
+    </Group>     
+</Benchmark>
