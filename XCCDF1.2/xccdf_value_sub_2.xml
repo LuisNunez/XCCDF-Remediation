@@ -12,7 +12,7 @@
     <title>Sample XCCDF with ovrl </title>
     <description>Example of fix with Sub and Value.</description>
     <platform idref="cpe:/o:microsoft:windws_7"/>
-    <version>.1</version>
+    <version>.2</version>
     <Value id="xccdf_org.mitre_value_lan_manager_authentication_level_var" type="number" operator="greater than or equal">
         <title>Network Security: LAN Manager Authentication Level</title>
         <description>Network Security: LAN Manager Authentication Level</description>
@@ -24,13 +24,13 @@
         <value selector="send_NTLMv2_response_only_refuse_LM">4</value>
         <value selector="send_NTLMv2_response_only_refuse_LM_and_NTLM">5</value>
     </Value>
-    <Rule id="xccdf_org.mitre_rule_GPO">
-        <fixtext fixref="ovrl_com.example_31-5_fix"> Set Domain Group Policy Object 
+    <Rule id="xccdf_org.mitre_rule_GPO" selected="true">
+        <fixtext fixref="ovrl_com.example_31-5_fix" reboot="true" complexity="low" disruption="high"> Set Domain Group Policy Object 
         (Computer Configuration\Windows Settings\Security Settings\Local Policies\Security Options) 
         using the IGroupPolicyObject interface.   Network security: LAN Manager authentication level
         should be set to <sub idref="xccdf_org.mitre_value_lan_manager_authentication_level_var"/>
         </fixtext> 
-        <fix id="xccdf_ovrl_com.example_31-5_fix" system="http://ovrl.mitre.org/ovrl.xsd">
+        <fix id="xccdf_ovrl_com.example_31-5_fix" system="http://ovrl.mitre.org/ovrl.xsd" platform="cpe:/o:microsoft:windws_7" reboot="true" disruption="high" complexity="low">
             Win7_STIG-ovrl.xml:ovrl:com.example:31-5:lan_manager_authentication_level:<sub idref="xccdf_org.mitre_value_lan_manager_authentication_level_var"/>
         </fix>
     </Rule>

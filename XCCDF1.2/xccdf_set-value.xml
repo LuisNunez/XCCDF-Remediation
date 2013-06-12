@@ -12,7 +12,7 @@
     <title>Sample XCCDF Cisco IOS password length</title>
     <description>Example</description>
     <platform idref="cpe:/o:cisco:ios:15.1"/>
-    <version>.1</version>
+    <version>.2</version>
     <Profile id="xccdf_org.mitre_profile_high">
         <title>Restrictive Profile</title>
        <select idref="xccdf_org.mitre_value_password_length" selected="true"/>
@@ -31,4 +31,16 @@
         <lower-bound>5</lower-bound>
         <upper-bound>60</upper-bound>
     </Value>
+    <Group id="xccdf_org.mitre_group_Group1" selected="true">
+        <platform idref="cpe:/o:cisco:ios:15.1"/>
+        <Rule id="xccdf_org.mitre_rule_1" selected="true">
+            <fixtext fixref="xccdf_org.mitre_fix_1">Set the miniimum password length</fixtext>
+            <fix id="xccdf_org.mitre_fix_1" system="urn:xccdf:fix:system:commands" platform="cpe:/o:cisco:ios:15.1" complexity="low" disruption="low" reboot="true">
+                security password min-lengh <sub idref="xccdf_org.mitre_value_password_length"/>
+            </fix>
+            <check system="http://oval.mitre.org/XMLSchema/oval">
+                <check-content-ref href="http://oval.mitre.org/repo/CiscoIOS-oval.xml" name="oval1000"/>
+            </check>
+        </Rule>
+    </Group>
 </Benchmark>
