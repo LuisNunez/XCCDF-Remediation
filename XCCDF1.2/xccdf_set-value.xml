@@ -12,7 +12,7 @@
     <title>Sample XCCDF Cisco IOS password length</title>
     <description>Example</description>
     <platform idref="cpe:/o:cisco:ios:15.1"/>
-    <version>.3</version>
+    <version>.4</version>
     <Profile id="xccdf_org.mitre_profile_high">
         <title>Restrictive Profile</title>
        <select idref="xccdf_org.mitre_value_password_length" selected="true"/>
@@ -28,8 +28,8 @@
         <reference href="https://tools.cisco.com/Support/CLILookup/cltSearchAction.do"></reference>
         <value>12</value>
         <default>6</default>
-        <lower-bound>5</lower-bound>
-        <upper-bound>60</upper-bound>
+        <lower-bound>0</lower-bound>
+        <upper-bound>16</upper-bound>
     </Value>
     <Group id="xccdf_org.mitre_group_Group1" selected="true">
         <platform idref="cpe:/o:cisco:ios:15.1"/>
