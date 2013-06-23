@@ -12,7 +12,7 @@
     <title>Sample XCCDF Cisco IOS password length</title>
     <description>Example</description>
     <platform idref="cpe:/o:cisco:ios:15.1"/>
-    <version>.4</version>
+    <version>.5</version>
     <Profile id="xccdf_org.mitre_profile_high">
         <title>Restrictive Profile</title>
        <select idref="xccdf_org.mitre_value_password_length" selected="true"/>
@@ -21,7 +21,7 @@
         <title>Basic Profile</title>
         <set-value idref="xccdf_org.mitre_profile_length">8</set-value>
     </Profile>
-    <Value id="xccdf_org.mitre_value_password_length" type="number">
+    <Value id="xccdf_org.mitre_value_password_length" type="number" operator="greater than or equal">
         <title>Cisco IOS Password length</title>
         <description>security password min-length command is used to enforce minimum password length on a IOS device.
         This is an example and the values below need to verfied with Cisco IOS documentation on lower and upper bounds.</description>
