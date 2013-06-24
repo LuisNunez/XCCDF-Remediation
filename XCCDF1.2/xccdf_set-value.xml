@@ -36,7 +36,7 @@
         <Rule id="xccdf_org.mitre_rule_1" selected="false">
             <fixtext fixref="xccdf_org.mitre_fix_1">Set the miniimum password length</fixtext>
             <fix id="xccdf_org.mitre_fix_1" system="urn:xccdf:fix:system:commands" platform="cpe:/o:cisco:ios:15.1" complexity="low" disruption="low" reboot="true">
-                security password min-length <sub idref="xccdf_org.mitre_value_password_length"/>
+                security password min-length <sub idref="xccdf_org.mitre_value_password_length" use="value"/>
             </fix>
             <check system="http://oval.mitre.org/XMLSchema/oval">
                 <check-content-ref href="http://oval.mitre.org/repo/CiscoIOS-oval.xml" name="oval1000"/>
