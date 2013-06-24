@@ -6,7 +6,7 @@
     xmlns:cpe="http://cpe.mitre.org/language/2.0" 
     xmlns:dc="http://purl.org/dc/elements/1.1/"
     xmlns:xccdf="http://checklists.nist.gov/xccdf/1.2"
-    id="xccdf_RM1_benchmark_org.mitre" xml:lang="en" 
+    id="xccdf_org.mitre_benchmark_1" xml:lang="en" 
     xsi:schemaLocation="http://checklists.nist.gov/xccdf/1.2 http://scap.nist.gov/schema/xccdf/1.2/xccdf_1.2.xsd">   
     <status date="2013-05-22">incomplete</status>
     <title>XCCDF Plain-text and Sub examples</title>
@@ -35,7 +35,7 @@
         See User Agreement for details.
     </plain-text>
     
-    <version>.2</version>
+    <version>.3</version>
     <Group id="xccdf_org.mitre_group_2">
         <Rule id="xccdf_org.mitre_rule_ios_banner2">
             <description>Two Examples:
