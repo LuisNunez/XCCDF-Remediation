@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tailoring xmlns="http://checklists.nist.gov/xccdf/1.2" 
+        xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" 
+        xmlns:xhtml="http://www.w3.org/1999/xhtml" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xmlns:cpe="http://cpe.mitre.org/language/2.0" 
+        xmlns:dc="http://purl.org/dc/elements/1.1/"
+        xmlns:xccdf="http://checklists.nist.gov/xccdf/1.2" id="xccdf_org.mitre_tailoring_1" Id="xccdf_org.mitre_profile_high"
+        xsi:schemaLocation="http://checklists.nist.gov/xccdf/1.2 http://scap.nist.gov/schema/xccdf/1.2/xccdf_1.2.xsd">
+    <benchmark  href="xccdf_mitre.org_benchmar_tailor_1" version=".7"/>
+    <status date="2013-06-24">draft</status>    
+    <version time="2013-06-24T12:55:01-04:00">.1</version>       
+    <Profile id="xccdf_org.mitre_profile_taylor_1">       
+        <title>Tailoring High Profile</title>
+        <description>Exmaple xccdf:Tailoring elment</description>
+        <select idref="xccdf_org.mitre_value_password_length" selected="true"/>
+    </Profile>
+</Tailoring>
