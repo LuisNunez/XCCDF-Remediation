@@ -12,8 +12,19 @@
 <description>Example XCCDF Remediation values</description>    
     <version>.4</version>
 <Profile id="xccdf_org.mitre_profile_1">
-    <title>Test Profile </title>
+    <title>Cisco/Juniper SSH Profile</title>
+    <description>Profile to SSH settings on Cisco and Juniper devices</description>
     <set-value idref="xccdf_org.mitre_value_test_val">3</set-value>
+    <select idref="xccdf_org.mitre_rule_SSH_1" selected="true"/>
+    <select idref="xccdf_org.mitre_rule_ios_SSH_1" selected="true"></select>
+</Profile>
+<Profile id="xccdf_org.mitre_profile_2">
+    <title>Cisco Profile</title>
+    <select idref="xccdf_org.mitre_group_ios" selected="true"/>
+</Profile>
+<Profile id="xccdf_org.mitre_profile_3">
+    <title>Juniper Profile</title>
+    <select idref="xccdf_org.mitre_group_junos" selected="1"/>
 </Profile>
     <Value id="xccdf_org.mitre_value_test_val" operator="equals" type="number">
         <value>2</value>
