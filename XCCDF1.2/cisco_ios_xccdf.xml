@@ -41,4 +41,5 @@
     <Group id="xccdf_com.c3isecurity_group_ntp" selected="false">
         <description>Network Time Protocol (NTP) related security configurations.</description>
     </Group>
+    <Group id="xccdf_com.c3isecurity_group_ospf"></Group>
 </Benchmark>
