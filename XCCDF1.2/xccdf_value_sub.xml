@@ -47,10 +47,12 @@
             <value>2</value>
         </Value>
         <Rule id="xccdf_org.mitre_rule_ios_SSH_1" >
-            <fixtext fixref="fix_ios_ssh_1">Configure the network element to use SSH version 2.</fixtext>
+            <fixtext fixref="fix_ios_ssh_1" reboot="false">Configure the network element to use SSH version 2.</fixtext>
             <fix id="fix_ios_ssh_1" reboot="false" system="urn:xccdf:fix:commands" platform="cpe://cisco:ios:12.3" complexity="low" disruption="low" strategy="configure">
                 ip ssh version <sub idref="xccdf_org.mitre_value_ssh_version"/></fix>
-            <check system="check_ios_ssh" ></check>
+            <check system="check_ios_ssh" >
+            </check>
+            
         </Rule>
     </Group>
 </Benchmark>
