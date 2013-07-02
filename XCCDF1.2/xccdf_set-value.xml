@@ -23,8 +23,8 @@
     </Profile>
     <Value id="xccdf_org.mitre_value_password_length" type="number" operator="greater than or equal">
         <title>Cisco IOS Password length</title>
-        <description>security password min-length command is used to enforce minimum password length on a IOS device.
-        This is an example and the values below need to verfied with Cisco IOS documentation on lower and upper bounds.</description>
+        <description>The IOS command “security password min-length” is used to enforce minimum password length on an IOS device.
+            This is an example and the values below need to verified with Cisco IOS documentation on lower and upper bounds.</description>
         <reference href="https://tools.cisco.com/Support/CLILookup/cltSearchAction.do"></reference>
         <value>12</value>
         <default>6</default>
@@ -34,7 +34,7 @@
     <Group id="xccdf_org.mitre_group_Group1" selected="true">
         <platform idref="cpe:/o:cisco:ios:15.1"/>
         <Rule id="xccdf_org.mitre_rule_1" selected="false">
-            <fixtext fixref="xccdf_org.mitre_fix_1">Set the miniimum password length</fixtext>
+            <fixtext fixref="xccdf_org.mitre_fix_1">Set the minimum password length</fixtext>
             <fix id="xccdf_org.mitre_fix_1" system="urn:xccdf:fix:system:commands" platform="cpe:/o:cisco:ios:15.1" complexity="low" disruption="low" reboot="true">
                 security password min-length <sub idref="xccdf_org.mitre_value_password_length" use="value"/>
             </fix>
