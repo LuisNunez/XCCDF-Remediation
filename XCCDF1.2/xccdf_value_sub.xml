@@ -50,9 +50,9 @@
             <fixtext fixref="fix_ios_ssh_1" reboot="false">Configure the network element to use SSH version 2.</fixtext>
             <fix id="fix_ios_ssh_1" reboot="false" system="urn:xccdf:fix:commands" platform="cpe://cisco:ios:12.3" complexity="low" disruption="low" strategy="configure">
                 ip ssh version <sub idref="xccdf_org.mitre_value_ssh_version"/></fix>
-            <check system="check_ios_ssh" >
-            </check>
-            
+            <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+                <check-content-ref name="oval:c3i:def:1111" href="cisco-ios-oval.xml"/>
+            </check>     
         </Rule>
     </Group>
 </Benchmark>
