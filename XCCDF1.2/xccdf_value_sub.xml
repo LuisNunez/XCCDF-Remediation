@@ -36,7 +36,7 @@
         <Rule id="xccdf_org.mitre_rule_SSH_1">
             <fixtext fixref="fix_junos_ssh_1" reboot="false">Configure the network element to use SSH version 2.</fixtext>
             <fix id="fix_junos_ssh_1" reboot="false" system="urn:xccdf:fix:commands" platform="cpe:/o:juniper:junos:12.1" complexity="unknown" disruption="low" strategy="configure">
-                set systemservices ssh protocol-version <sub idref="xccdf_org.mitre_value_junos_ssh_v2"/>
+                set systems ervices ssh protocol-version <sub idref="xccdf_org.mitre_value_junos_ssh_v2"/>
             </fix>
             <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5" id="junos_ssh_oval" >
                 <check-content-ref name="oval:com.c3isecurity.junos:def:3333" href="juniper-junos-oval.xml"/>
