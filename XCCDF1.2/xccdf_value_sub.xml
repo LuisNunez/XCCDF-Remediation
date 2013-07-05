@@ -35,7 +35,7 @@
         </Value>
         <Rule id="xccdf_org.mitre_rule_SSH_1">
             <fixtext fixref="fix_junos_ssh_1" reboot="false">Configure the network element to use SSH version 2.</fixtext>
-            <fix id="fix_junos_ssh_1" reboot="false" system="urn:xccdf:fix:commands" platform="cpe://juniper:junos:12.1" complexity="unknown" disruption="low" strategy="configure">
+            <fix id="fix_junos_ssh_1" reboot="false" system="urn:xccdf:fix:commands" platform="cpe:/juniper:junos:12.1" complexity="unknown" disruption="low" strategy="configure">
                 set systemservices ssh protocol-version <sub idref="xccdf_org.mitre_value_junos_ssh_v2"/>
             </fix>
             <check system="check_junos_ssh" id="junos_ssh_oval" ></check>
@@ -48,7 +48,7 @@
         </Value>
         <Rule id="xccdf_org.mitre_rule_ios_SSH_1" >
             <fixtext fixref="fix_ios_ssh_1" reboot="false">Configure the network element to use SSH version 2.</fixtext>
-            <fix id="fix_ios_ssh_1" reboot="false" system="urn:xccdf:fix:commands" platform="cpe://cisco:ios:12.3" complexity="low" disruption="low" strategy="configure">
+            <fix id="fix_ios_ssh_1" reboot="false" system="urn:xccdf:fix:commands" platform="cpe:/cisco:ios:12.3" complexity="low" disruption="low" strategy="configure">
                 ip ssh version <sub idref="xccdf_org.mitre_value_ssh_version"/></fix>
             <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
                 <check-content-ref name="oval:c3i:def:1111" href="cisco-ios-oval.xml"/>
