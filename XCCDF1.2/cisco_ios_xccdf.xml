@@ -18,7 +18,7 @@
     <reference href="http://tools.cisco.com/security/center/home.x">
         Cisco Security website
     </reference>
-    <platform idref="cpe:/o:cisco:ios:12"/>
+    <platform idref="cpe:/o:cisco:ios:15"/>
     <version>.1</version>
     <Profile id="xccdf_com.c3isecurity_profile_base">
       <title>Cisco IOS Base security setting</title>
@@ -50,5 +50,22 @@
     </Group>
     <Group id="xccdf_com.c3isecurity_group_Authentication">
         <description>Rules in this group </description>
+        <Rule id="xccdf_com.c3isecurity_rule_enable_secret" selected="false">
+            <description>Cisco IOS command to encrypt the enable password.  The command has several encryption modes: 
+            by default mode 0 will covert the entered text to SHA256
+            5 = MD5
+            4 = SHA256</description>
+            <fix id="fix_enable_secret" system="urn:xccdf:fix:commands">
+                enable secret 4
+            </fix>
+            <check id="check_enable_secret" system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+                <check-content-ref name="" href=""/>
+            </check>
+
+        </Rule>
+        <Rule id="xccdf_com.c3isecurity_rule_service_password" selected="false">
+            <description>Cisco IOS command to encrypt passwords, username passwords, authentication key passwords, console and vty passwords, BGP passwords</description>
+            <fixtext fixref="service_password"></fixtext>
+        </Rule>
     </Group>
 </Benchmark>
