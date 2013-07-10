@@ -55,17 +55,23 @@
             by default mode 0 will covert the entered text to SHA256
             5 = MD5
             4 = SHA256</description>
+            <fixtext fixref="fix_enable_secret">
+                Apply the Cisco IOS command "enable secret" with password.  There are comple of parameters that can be
+                passed with the command.  Example "enable secret 4 password" from global configuration mode.
+            </fixtext>
             <fix id="fix_enable_secret" system="urn:xccdf:fix:commands">
                 enable secret 4
             </fix>
             <check id="check_enable_secret" system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
                 <check-content-ref name="" href=""/>
             </check>
-
         </Rule>
-        <Rule id="xccdf_com.c3isecurity_rule_service_password" selected="false">
-            <description>Cisco IOS command to encrypt passwords, username passwords, authentication key passwords, console and vty passwords, BGP passwords</description>
-            <fixtext fixref="service_password"></fixtext>
+        <Rule id="xccdf_com.c3isecurity_rule_service_password-encryption" selected="false">
+            <description>Cisco IOS command to encrypt passwords, username passwords, authentication key passwords, console and vty passwords, BGP passwords.
+            By default the service is not enabled.</description>
+            <fixtext fixref="fix_service_password-encryption">
+                Apply the Cisco IOS command "service password-encryption" from the global configuration mode.
+            </fixtext>
         </Rule>
     </Group>
 </Benchmark>
