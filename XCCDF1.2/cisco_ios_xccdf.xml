@@ -20,9 +20,12 @@
     </reference>
     <platform idref="cpe:/o:cisco:ios:15"/>
     <version>.1</version>
+
     <Profile id="xccdf_com.c3isecurity_profile_base">
       <title>Cisco IOS Base security setting</title>
       <description>The profile covers basic security settings that are cross IOS platforms.</description>
+        <select idref="xccdf_com.c3isecurity_rule_enable_secret" selected="true"/>
+        <select idref="xccdf_com.c3isecurity_rule_service_password-encryption" selected="true"></select>
     </Profile>
     <Profile id="xccdf_com.c3isecurity_profile_management">
         <title>Cisco IOS Management Plane security settings</title>
@@ -39,6 +42,21 @@
     <Profile id="xccdf_com.c3isecurity_profile_ipv6">
         <title>Cisco IOS IPv6 Security settings</title>
     </Profile>
+    <Value id="xccdf_com.c3isecurity_value_stig_profile_var" type="string" interactive="true" interfaceHint="choice" >
+        <title>Choose what role does the devide play on the network</title>
+        <description>The are two types of STIG checklists.
+            Infrastructure
+            Perimeter</description>
+        <question xml:lang="en">Infrastructure or perimeter?</question>
+        <value selector="infrastructure">infrastructure</value>
+        <value selector="perimeter">perimeter</value>
+        <choices>
+            <choice>infrastrucutre-router</choice>
+            <choice>infrastrucutre-L3-switch</choice>
+            <choice>perimeter-router</choice>
+            <choice>perimeter-l3-switch</choice>
+        </choices>
+    </Value>
     <Group id="xccdf_com.c3isecurity_group_ntp" selected="false">
         <description>Network Time Protocol (NTP) related security configurations.</description>
     </Group>
