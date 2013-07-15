@@ -48,7 +48,7 @@
             Perimeter</description>
         <question xml:lang="en">Infrastructure or perimeter?</question>
         <value selector="infrastructure">infrastructure</value>
-        <value selector="perimeter">perimeter</value>>
+        <value selector="perimeter">perimeter</value>
         <choices>
             <choice>infrastrucutre-router</choice>
             <choice>infrastrucutre-L3-switch</choice>
