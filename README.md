@@ -3,6 +3,7 @@ XCCDF Remediation example documents.
 
  
 XCCDF1.2 Directory contains sample XCCDF version 1.2 remediation examples.
+- cisco_ios_xccdf.xml
 - xccdf_plain_text_sub.xml
 - xccdf_value_sub.xml
 - xccdf_value_sub_2.xml
