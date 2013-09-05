@@ -45,7 +45,8 @@
         <title>Choose what role does the devide play on the network</title>
         <description>The are two types of STIG checklists.
             Infrastructure
-            Perimeter</description>
+            Perimeter
+        </description>
         <question xml:lang="en">Infrastructure or perimeter?</question>
         <value selector="infrastructure">infrastructure</value>
         <value selector="perimeter">perimeter</value>
