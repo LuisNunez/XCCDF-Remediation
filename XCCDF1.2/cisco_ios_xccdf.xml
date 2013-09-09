@@ -59,9 +59,6 @@
     <Group id="xccdf_com.c3isecurity_group_ospf">
         <platform idref="cpe:/o:cisco:ios:12"/>
     </Group>
-    <Group id="xccdf_com.c3isecurity_group_rip">
-        <platform idref="cpe:2.3:cisco:ios:15.1:-:-:-:-:-:-:-:-"/>
-    </Group>
     <Group id="xccdf_com.c3isecurity_group_common_settings">
         <description>Rules in this group are basics settings </description>
     </Group>
