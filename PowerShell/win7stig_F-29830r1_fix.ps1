@@ -39,5 +39,19 @@ if ($b -eq "True")
         Write-Host "key does not exist"
         Write-Host "Creating key"
         New-Item -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application
+        Write-host "Creating key value MaxSize"
     }
 
+<# Commented out for now.
+if((Get-ItemProperty -path registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application -Name MaxSize -ea 0).go ) 
+    {'Propertyalready exists'
+        Write-Host 'Value Exits'
+    }
+    else 
+    {
+        Write-Host "Does not Exists" 
+        Write-Host "Writing value"
+        Set-ItemProperty -path registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application -Name MaxSize -Type DWord -Value '32768'
+    }
+Write-Host "End of Remedidation"
+#>
