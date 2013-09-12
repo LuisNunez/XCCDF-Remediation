@@ -1,6 +1,6 @@
 ﻿<# UnFix Undo Remediation script #>
 
-Write-Output "Starting Remediation"
+Write-Output "Starting Remediation Undo"
 $a = Test-Path -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\
 
 
