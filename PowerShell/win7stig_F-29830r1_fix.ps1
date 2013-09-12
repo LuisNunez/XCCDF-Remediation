@@ -40,6 +40,7 @@ if ($b -eq "True")
         Write-Host "Creating key"
         New-Item -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application
         Write-host "Creating key value MaxSize"
+        Set-ItemProperty -path registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application -Name MaxSize -Type DWord -Value '32768'
     }
 
 <# Commented out for now.

@@ -6,7 +6,7 @@ $a = Test-Path -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Wi
 
 if ( $a -eq "True")
     {
-        Write-Host "key exists"
+        Write-Host "Key exists"
         Write-Host "Deleting Key"
         Remove-Item -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog -Recurse
     }
