@@ -54,5 +54,5 @@ if((Get-ItemProperty -path registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Micros
         Write-Host "Writing value"
         Set-ItemProperty -path registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application -Name MaxSize -Type DWord -Value '32768'
     }
-Write-Host "End of Remedidation"
+Write-Host "End of Remediadation"
 #>
