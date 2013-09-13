@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This document contains extracts from the DISA Windows 7 STIG Benchmark.  -->
+<!--    ○ XCCDF rule for Maximum Application log size.  -->
+<!--    ○ It contains the OVAL definition for checking the Maximum Application log size.  -->
+
+<!-- XCCDF Defintion -->
+<Value id="maximum_application_log_size_var" type="number" operator="equals">
+    <title>Maximum Application Log Size</title>
+    <description>The value defines the maximum size (in KB) of the application log.</description>
+    <value>32768</value>
+    <value selector="enabled:16384_kb">16384</value>
+    <value selector="enabled:32768_kb">32768</value>
+    <value selector="enabled:81920_kb">81920</value>
+</Value>
+
+<Group id="V-26579">
+    <title>Maximum Log Size - Application</title>
+    <description>&lt;GroupDescription&gt;&lt;/GroupDescription&gt;</description>
+    <Rule id="SV-36021r1_rule" severity="medium" weight="10.0">
+        <version>WINAU-100100</version>
+        <title>The Application event log will be configured to a minimum size requirement.</title>
+        <description>&lt;VulnDiscussion&gt;Inadequate log size will cause the log to fill up quickly and require frequent clearing by administrative personnel.&lt;/VulnDiscussion&gt;&lt;FalsePositives&gt;&lt;/FalsePositives&gt;&lt;FalseNegatives&gt;&lt;/FalseNegatives&gt;&lt;Documentable&gt;true&lt;/Documentable&gt;&lt;Mitigations&gt;&lt;/Mitigations&gt;&lt;SeverityOverrideGuidance&gt;&lt;/SeverityOverrideGuidance&gt;&lt;PotentialImpacts&gt;&lt;/PotentialImpacts&gt;&lt;ThirdPartyTools&gt;&lt;/ThirdPartyTools&gt;&lt;MitigationControl&gt;&lt;/MitigationControl&gt;&lt;Responsibility&gt;System Administrator&lt;/Responsibility&gt;&lt;IAControls&gt;ECRR-1&lt;/IAControls&gt;</description>
+        <reference>
+            <dc:title>VMS Target Windows 7</dc:title>
+            <dc:publisher>DISA FSO</dc:publisher>
+            <dc:type>VMS Target</dc:type>
+            <dc:subject>Windows 7</dc:subject>
+            <dc:identifier>1712</dc:identifier>
+        </reference>
+        <ident system="http://cce.mitre.org">CCE-9603-2</ident>
+        <fixtext fixref="F-29830r1_fix">Configure the policy value for Computer Configuration -&gt; Administrative Templates -&gt; Windows Components -&gt; Event Log Service -&gt; Application -&gt; “Maximum Log Size (KB)” to at minimum “Enabled:32768”.
+        </fixtext>
+        <fix id="F-29830r1_fix"/>
+        <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+            <check-export value-id="maximum_application_log_size_var" export-name="oval:mil.disa.fso.windows:var:383400"/>
+            <check-content-ref name="oval:mil.disa.fso.windows:def:3834" href="U_Windows_7_V1R16_STIG_Benchmark-oval.xml"/>
+        </check>
+    </Rule>
+</Group>
+
+<!-- OVAL Systems Characteristics -->
+
+<collected_objects>
+    <object comment="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application!MaxSize" flag="does not exist" id="oval:mil.disa.fso.windows:obj:383400" version="1">
+        <reference item_ref="1"/>
+    </object>
+</collected_objects>
+<system_data>
+    <registry_item id="1" status="does not exist" xmlns="http://oval.mitre.org/XMLSchema/oval-system-characteristics-5#windows">
+        <hive>HKEY_LOCAL_MACHINE</hive>
+        <key status="does not exist"></key>
+        <windows_view>64_bit</windows_view>
+    </registry_item>
+</system_data>
+
+<!-- OVAL Defintion  -->
+<definition id="oval:mil.disa.fso.windows:def:3834" version="2" class="compliance">
+    <metadata>
+        <title>Maximum Application Log Size</title>
+        <affected family="windows">
+            <platform>Microsoft Windows 7</platform>
+        </affected>
+        <reference source="CCE" ref_url="http://cce.mitre.org" ref_id="CCE-9603-2"/>
+        <description>This definition tests the maximum allowed size of the application log is equal to or greater than the supplied value.</description>
+    </metadata>
+    <criteria operator="AND">
+        <criterion test_ref="oval:mil.disa.fso.windows:tst:383400" comment="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application!MaxSize value equals or is greater than variable"/>
+    </criteria>
+</definition>
+
+<registry_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows" id="oval:mil.disa.fso.windows:tst:383400" version="2" check_existence="at_least_one_exists" check="all" comment="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application!MaxSize value equals or is greater than variable">
+    <object object_ref="oval:mil.disa.fso.windows:obj:383400"/>
+    <state state_ref="oval:mil.disa.fso.windows:ste:383400"/>
+</registry_test>
+
+<registry_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows" id="oval:mil.disa.fso.windows:obj:383400" version="1" comment="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application!MaxSize">
+    <hive datatype="string">HKEY_LOCAL_MACHINE</hive>
+    <key datatype="string">SOFTWARE\Policies\Microsoft\Windows\EventLog\Application</key>
+    <name datatype="string">MaxSize</name>
+</registry_object>
+
+<registry_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows" id="oval:mil.disa.fso.windows:ste:383400" version="2" comment="Value equals or is greater than variable">
+    <type>reg_dword</type>
+    <value datatype="int" operation="greater than or equal" var_ref="oval:mil.disa.fso.windows:var:383400"/>
+</registry_state>
+
