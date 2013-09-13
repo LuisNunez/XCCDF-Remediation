@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<oval_definitions xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5" 
+  xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-definitions-5" 
+  xmlns:win-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows"
+  xmlns:ind-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+  xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd 
+  http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd
+  http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd
+  http://oval.mitre.org/XMLSchema/oval-definitions-5#windows windows-definitions-schema.xsd
+  http://standards.iso.org/iso/19770/-2/2009/schema.xsd schema.xsd">
+  <generator>
+    <oval:product_name>OVAL Win7 STIG F29830r1</oval:product_name>
+    <oval:product_version>1</oval:product_version>
+    <oval:schema_version>5.10</oval:schema_version>
+    <oval:timestamp>2013-09-13T02:30:15</oval:timestamp>
+  </generator>
+<!-- Definitions -->
+ <definitions>
+  <definition id="oval:mil.disa.fso.windows:def:3834" version="2" class="compliance">
+    <metadata>
+      <title>Maximum Application Log Size</title>
+      <affected family="windows">
+        <platform>Microsoft Windows 7</platform>
+      </affected>
+      <reference source="CCE" ref_url="http://cce.mitre.org" ref_id="CCE-9603-2"/>
+      <description>This definition tests the maximum allowed size of the application log is equal to or greater than the supplied value.</description>
+    </metadata>
+    <criteria operator="AND">
+      <criterion test_ref="oval:mil.disa.fso.windows:tst:383400" comment="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application!MaxSize value equals or is greater than variable"/>
+    </criteria>
+  </definition>
+</definitions>
+<!-- Tests -->
+<tests>
+  <registry_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows" id="oval:mil.disa.fso.windows:tst:383400" version="2" check_existence="at_least_one_exists" check="all" comment="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application!MaxSize value equals or is greater than variable">
+    <object object_ref="oval:mil.disa.fso.windows:obj:383400"/>
+    <state state_ref="oval:mil.disa.fso.windows:ste:383400"/>
+  </registry_test>
+</tests>
+<!-- Objects -->
+<objects>
+  <registry_object xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows" id="oval:mil.disa.fso.windows:obj:383400" version="1" comment="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application!MaxSize">
+    <hive datatype="string">HKEY_LOCAL_MACHINE</hive>
+    <key datatype="string">SOFTWARE\Policies\Microsoft\Windows\EventLog\Application</key>
+    <name datatype="string">MaxSize</name>
+  </registry_object>
+</objects>
+<!-- States -->
+<states>
+  <registry_state xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows" id="oval:mil.disa.fso.windows:ste:383400" version="2" comment="Value equals or is greater than variable">
+    <type>reg_dword</type>
+    <value datatype="int" operation="greater than or equal" var_ref="oval:mil.disa.fso.windows:var:383400"/>
+  </registry_state>
+</states>
+<!--  Variables  -->
+  <variables>
+  		<external_variable id="oval:mil.disa.fso.windows:var:383400" version="1" datatype="int" comment="Maximum Application Log Size">
+			<possible_value hint="enabled:16384_kb">16384</possible_value>
+			<possible_value hint="enabled:32768_kb">32768</possible_value>
+			<possible_value hint="enabled:81920_kb">81920</possible_value>
+		</external_variable>
+  </variables>
+</oval_definitions>
+
