@@ -3,7 +3,7 @@
 <!--    ○ XCCDF rule for Maximum Application log size.  -->
 <!--    ○ It contains the OVAL definition for checking the Maximum Application log size.  -->
 
-<!-- XCCDF Defintion -->
+<!-- XCCDF Definition -->
 <Value id="maximum_application_log_size_var" type="number" operator="equals">
     <title>Maximum Application Log Size</title>
     <description>The value defines the maximum size (in KB) of the application log.</description>
@@ -53,7 +53,7 @@
     </registry_item>
 </system_data>
 
-<!-- OVAL Defintion  -->
+<!-- OVAL Definition  -->
 <definition id="oval:mil.disa.fso.windows:def:3834" version="2" class="compliance">
     <metadata>
         <title>Maximum Application Log Size</title>
