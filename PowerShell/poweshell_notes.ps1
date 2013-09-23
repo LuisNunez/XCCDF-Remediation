@@ -25,4 +25,4 @@
 <# Update (change) registry key vaule #>
 Set-ItemProperty -Path HKCU:\Software\_DeleteMe -Name PowerShellTest1 -Value PS3  -Verbose
 
-
+test
