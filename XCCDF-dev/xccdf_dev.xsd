@@ -1751,7 +1751,8 @@
             </xsd:enumeration>
         </xsd:restriction>
     </xsd:simpleType>
-    <!-- Dev -->
+ 
+    <!-- XCCDF Dev Remediation Elements -->
     <xsd:complexType name="fixImportType" mixed="true">
         <xsd:annotation>
             <xsd:documentation xml:lang="en"> Data type for the &lt;xccdf:fix-import&gt; element,
@@ -1846,7 +1847,8 @@
             <xsd:any namespace="##other" processContents="skip"/>
         </xsd:choice>
     </xsd:complexType>
-<!-- Dev -->
+    <!-- XCCDF Dev Remediation Elements -->
+    
     <xsd:simpleType name="ratingEnumType">
         <xsd:annotation>
             <xsd:documentation xml:lang="en"> This type enumerates allowed rating values the
