@@ -7,7 +7,7 @@
     xmlns:dc="http://purl.org/dc/elements/1.1/"
     xmlns:xccdf="http://checklists.nist.gov/xccdf/1.2"
     id="xccdf_org.mitre_benchmark_win7stig" xml:lang="en" 
-    xsi:schemaLocation="http://checklists.nist.gov/xccdf/1.2 http://scap.nist.gov/schema/xccdf/1.2/xccdf_1.2.xsd">   
+    xsi:schemaLocation="http://checklists.nist.gov/xccdf/1.2 xccdf_dev.xsd">   
     <status date="2013-09-12">draft</status>
     <title>Sample XCCDF Windows 7 STIG</title>
     <description>Example to demo Remediation and PowerShell scripts</description>
@@ -47,15 +47,25 @@
                 Set-ItemProperty -path registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application -Name MaxSize -Type DWord -Value '32768' 
             </fix>
 <!-- Remediation using script -->
-            <fix id="F-29830r1_fix" system="urn:xccdf:fix:script:powershell">
+            <fix id="F-29830r1_fix" system="urn:xccdf:fix:system:powershell">
                 New-Item -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog
                 New-Item -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application
                 Set-ItemProperty -path registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application -Name MaxSize -Type DWord -Value '32768' 
             </fix>
+<!-- Dev New Elements-->
+          <fix>
+              <fix-export value-id="" export-name=""/>
+              <fix-content-ref href=""/>
+              <fix-content></fix-content>
+          </fix>
 <!-- Assessment -->
             <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
                 <check-export value-id="xccdf_org.mitre_value_maximum_application_log_size_var" export-name="oval:mil.disa.fso.windows:var:383400"/>
                 <check-content-ref name="oval:mil.disa.fso.windows:def:3834" href="U_Windows_7_V1R16_STIG_Benchmark-oval.xml"/>
+                <check-content></check-content>
+            </check>
+            <check system="">
+                <check-import import-name=""></check-import>
             </check>
         </Rule>
     </Group>
