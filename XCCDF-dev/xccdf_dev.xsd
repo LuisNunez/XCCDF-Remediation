@@ -1757,7 +1757,7 @@
         <xsd:annotation>
             <xsd:documentation xml:lang="en"> Data type for the &lt;xccdf:fix-import&gt; element,
                 which specifies a value that the &lt;xccdf:Benchmark&gt; author wishes to retrieve
-                from the fixing system during testing of a target system. The @import-name
+                from the fixing system during remediation of a target system. The @import-name
                 attribute identifies some structure in the fixing system that is then retrieved.
                 The mapping from the values of this attribute to specific fixing system structures
                 is beyond the scope of the XCCDF specification. When the &lt;xccdf:fix-import&gt;

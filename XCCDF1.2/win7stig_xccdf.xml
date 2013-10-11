@@ -47,7 +47,7 @@
                 Set-ItemProperty -path registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application -Name MaxSize -Type DWord -Value '32768' 
             </fix>
 <!-- Remediation using script -->
-            <fix id="F-29830r1_fix" system="urn:xccdf:fix:system:powershell">
+            <fix id="F-29830r1_fix" system="urn:xccdf:fix:script:powershell">
                 New-Item -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog
                 New-Item -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application
                 Set-ItemProperty -path registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application -Name MaxSize -Type DWord -Value '32768' 
