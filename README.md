@@ -1,6 +1,8 @@
 XCCDF Remediation example documents.
 
+PowerShell directory contains remediation related script files.
 
+XCCDF-dev Directory contains developmental XCCDF schema. Experimental 
  
 XCCDF1.2 Directory contains sample XCCDF version 1.2 remediation examples.
 - cisco_ios_xccdf.xml
