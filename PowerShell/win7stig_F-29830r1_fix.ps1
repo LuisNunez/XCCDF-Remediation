@@ -5,7 +5,8 @@
 <# Rule ID SV-36021r1_rule #>
 <# CCE-9603-2 #>
 <# fix id F-29830r1_fix #>
-<#  HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application MaxSize value #>
+<# Registry Path HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application #>
+<# MaxSize #>
 <# regdword #>
 <# value 32768 #>
 
@@ -16,6 +17,7 @@ New-Item -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\
 #>
 
 Write-Output "Starting Remediation"
+<# Testing for existence of registry key with the Test-Path cmdlet #>
 $a = Test-Path -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\
 $b = Test-Path -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application
 
