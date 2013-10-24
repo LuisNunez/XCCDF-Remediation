@@ -11,7 +11,7 @@
 <# Get-ChildItem -Path Registry::HKEY_USERS\ #>
 
 <# Create new registry key #>
- New-Item -Path HKCU:\Software\_DeleteMe  
+New-Item -Path HKCU:\Software\_DeleteMe  
 
 <# Delete registry key #>
 Remove-Item -path HKCU:\Software_DeleteMe -Verbose 
