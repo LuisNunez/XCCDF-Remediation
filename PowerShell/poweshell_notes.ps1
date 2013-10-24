@@ -2,13 +2,13 @@
 <# Cmdlets to address Windows 7 STIG registry settings #>
 
 <# Read a registry key #>
-<# Get-ChildItem -path hkcu:\ #>
-<# Get-ChildItem -Path Registry::HKEY_LOCAL_MACHINE\  #>
-<# Get-ChildItem -Path Registry::HKEY_CLASSES_ROOT\   #>
-<# Get-ChildItem -Path Registry::HKEY_CURRENT_CONFIG\ #>
-<# Get-ChildItem -Path Registry::HKEY_CURRENT_USER\   #>
-<# Get-ChildItem -Path Registry::HKEY_PERFORMANCE_DATA\ #>
-<# Get-ChildItem -Path Registry::HKEY_USERS\ #>
+Get-ChildItem -path hkcu:\ 
+Get-ChildItem -Path Registry::HKEY_LOCAL_MACHINE\  
+Get-ChildItem -Path Registry::HKEY_CLASSES_ROOT\  
+Get-ChildItem -Path Registry::HKEY_CURRENT_CONFIG\
+Get-ChildItem -Path Registry::HKEY_CURRENT_USER\  
+Get-ChildItem -Path Registry::HKEY_PERFORMANCE_DATA\
+Get-ChildItem -Path Registry::HKEY_USERS\
 
 <# Create new registry key #>
 New-Item -Path HKCU:\Software\_DeleteMe  
