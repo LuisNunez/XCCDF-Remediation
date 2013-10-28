@@ -19,6 +19,9 @@ Remove-Item -path HKCU:\Software_DeleteMe -Verbose
 # Create new registry key value #
 New-ItemProperty -Path HKCU:\Software\_DeleteME -Name PowerShellTest -PropertyType String -Value PS1 -Verbose 
 
+# Remove registry item
+Remove-ItemProperty -Path registry::hklm\SOFTWARE\Policies\Google\Chrome -name RemoteAccessClientFirewallTraversal -verbose
+
 # Update (change) registry key name #
 Rename-ItemProperty -Path HKCU:\Software\_DeleteMe -Name PowerShellTest -NewName PowerShellTest1 -Verbose 
 
