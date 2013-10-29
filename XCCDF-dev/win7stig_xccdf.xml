@@ -54,8 +54,8 @@
             </fix>
 <!-- Dev New Elements-->
           <fix>
-              <fix-export value-id="" export-name=""/>
-              <fix-content-ref href=""/>
+              <fix-export value-id="xccdf_org.mitre_value_maximum_application_log_size_var" export-name="maximum_application_log_size_var"/>
+              <fix-content-ref name="maximum_application_log_size" href="mod-reg.ps1"/>
               <fix-content></fix-content>
           </fix>
 <!-- Assessment -->
