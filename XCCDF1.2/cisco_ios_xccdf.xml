@@ -36,13 +36,23 @@
     <Profile id="xccdf_com.c3isecurity_profile_ipv6">
         <title>Cisco IOS IPv6 Security settings</title>
     </Profile>
+    <Profile id="xccdf_com.c3isecurity_profile_infrastructure_router">
+        <title>Cisco IOS Infrastrucutre Router Profile</title>
+    </Profile>
+    <Profile id="xccdf_com.c3isecurity_profile_infrastructure_l3_switch">
+        <title>Cisco IOS Infrastrucutre L3 Switch Profile</title>
+    </Profile>
+    <Profile id="xccdf_com.c3isecurity_profile_perimeter_router">
+        <title>Cisco IOS Perimeter_router Profile</title>
+    </Profile>
+    <Profile id="xccdf_com.c3isecurity_profile_l3_switch">
+        <title>Cisco IOS Perimeter L3 Switch Profile</title>
+    </Profile>
+    <!-- Experimental profile -->
     <Value id="xccdf_com.c3isecurity_value_stig_profile_var" type="string" interactive="true"
         interfaceHint="choice">
         <title>Choose what role does the devide play on the network</title>
-        <description>The are two types of STIG checklists.
-            Infrastructure
-            Perimeter
-        </description>
+        <description>The are two types of STIG checklists. Infrastructure Perimeter </description>
         <question xml:lang="en">Infrastructure or perimeter?</question>
         <value selector="infrastructure">infrastructure</value>
         <value selector="perimeter">perimeter</value>
@@ -53,6 +63,7 @@
             <choice>perimeter-l3-switch</choice>
         </choices>
     </Value>
+    
     <Group id="xccdf_com.c3isecurity_group_ntp" selected="false">
         <description>Network Time Protocol (NTP) related security configurations.</description>
     </Group>
