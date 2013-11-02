@@ -63,7 +63,7 @@
             <choice>perimeter-l3-switch</choice>
         </choices>
     </Value>
-    
+
     <Group id="xccdf_com.c3isecurity_group_ntp" selected="false">
         <description>Network Time Protocol (NTP) related security configurations.</description>
     </Group>
@@ -89,10 +89,11 @@
         </Rule>
         <Rule id="xccdf_com.c3isecurity_rule_service_password-encryption" selected="false">
             <description>Cisco IOS command to encrypt passwords, username passwords, authentication key
-                passwords, console and vty passwords, BGP passwords. By default the service is not
+                passwords, console and vty passwords and BGP passwords. By default the service is not
                 enabled.</description>
             <fixtext fixref="fix_service_password-encryption"> Apply the Cisco IOS command "service
-                password-encryption" from the global configuration mode. </fixtext>
+            password-encryption" from the global configuration mode. </fixtext>
+            <fix id="fix_service_password_encryption" system="urn:xccdf:fix:commands">service password-encryption</fix>
         </Rule>
     </Group>
 </Benchmark>
