@@ -92,8 +92,9 @@
                 passwords, console and vty passwords and BGP passwords. By default the service is not
                 enabled.</description>
             <fixtext fixref="fix_service_password-encryption"> Apply the Cisco IOS command "service
-            password-encryption" from the global configuration mode. </fixtext>
-            <fix id="fix_service_password_encryption" system="urn:xccdf:fix:commands">service password-encryption</fix>
+                password-encryption" from the global configuration mode. </fixtext>
+            <fix id="fix_service_password_encryption" system="urn:xccdf:fix:commands">service
+                password-encryption</fix>
         </Rule>
     </Group>
 </Benchmark>
