@@ -41,7 +41,7 @@
             <fixtext fixref="F-29830r1_fix">Configure the policy value for Computer Configuration -&gt; Administrative Templates -&gt; Windows Components -&gt; Event Log Service -&gt; Application -&gt; “Maximum Log Size (KB)” to at minimum “Enabled:32768”.
             </fixtext>
 <!-- Remediation using commands -->
-            <fix id="F-29830r1_fix" system="urn:xccdf:fix:system:commands">
+            <fix id="F-29830r1_fix" system="urn:xccdf:fix:system:commands" >
                 New-Item -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog
                 New-Item -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application
                 Set-ItemProperty -path registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application -Name MaxSize -Type DWord -Value '32768' 
@@ -50,13 +50,16 @@
             <fix id="F-29830r1_fix" system="urn:xccdf:fix:system:powershell">
                 New-Item -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog
                 New-Item -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application
-                Set-ItemProperty -path registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application -Name MaxSize -Type DWord -Value '32768' 
+                Set-ItemProperty -path registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application -Name MaxSize -Type DWord -Value '32768'
             </fix>
 <!-- Dev New Elements-->
-          <fix>
+            <fix>
               <fix-export value-id="xccdf_org.mitre_value_maximum_application_log_size_var" export-name="maximum_application_log_size_var"/>
               <fix-content-ref name="maximum_application_log_size" href="mod-reg.ps1"/>
-              <fix-content></fix-content>
+              <fix-content> test content
+                  <sub idref="xccdf_org.mitre_value_maximum_application_log_size_var"/>
+                  <instance/>
+              </fix-content>
           </fix>
 <!-- Assessment -->
             <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
@@ -65,7 +68,11 @@
                 <check-content></check-content>
             </check>
             <check system="">
-                <check-import import-name=""></check-import>
+                <check-import import-name="1"></check-import>
+            </check>
+            <check system="1">
+                <check-content></check-content>
+                
             </check>
         </Rule>
     </Group>
