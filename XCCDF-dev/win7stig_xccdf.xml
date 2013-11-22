@@ -10,7 +10,7 @@
     xsi:schemaLocation="http://checklists.nist.gov/xccdf/1.2 xccdf_dev.xsd">   
     <status date="2013-09-12">draft</status>
     <title>Sample XCCDF Windows 7 STIG</title>
-    <description>Example to demo Remediation and PowerShell scripts</description>
+    <description>Example for new remediation elements with PowerShell scripts</description>
     <platform idref="cpe:/o:microsoft:windows_7"/>
     <version>.1</version>
 
@@ -53,14 +53,22 @@
                 Set-ItemProperty -path registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application -Name MaxSize -Type DWord -Value '32768'
             </fix>
 <!-- Dev New Elements-->
+            <!-- Exercising fix-export, fix-content-ref -->
             <fix>
               <fix-export value-id="xccdf_org.mitre_value_maximum_application_log_size_var" export-name="maximum_application_log_size_var"/>
               <fix-content-ref name="maximum_application_log_size" href="mod-reg.ps1"/>
-              <fix-content> test content
-                  <sub idref="xccdf_org.mitre_value_maximum_application_log_size_var"/>
-                  <instance/>
+              <fix-content> 
+                  Set-ItemProperty -path registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application -Name MaxSize -Type DWord 
+                  -Value <sub idref="xccdf_org.mitre_value_maximum_application_log_size_var"/>
               </fix-content>
-          </fix>
+            </fix>
+            <!-- Exercising fix-content and sub -->
+            <fix id="F-29830r1_fix" system="urn:xccdf:fix:system:powershell">
+                <fix-content> 
+                    Set-ItemProperty -path registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application -Name MaxSize -Type DWord 
+                    -Value <sub idref="xccdf_org.mitre_value_maximum_application_log_size_var"/>
+                </fix-content>
+            </fix>
 <!-- Assessment -->
             <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
                 <check-export value-id="xccdf_org.mitre_value_maximum_application_log_size_var" export-name="oval:mil.disa.fso.windows:var:383400"/>
@@ -69,10 +77,6 @@
             </check>
             <check system="">
                 <check-import import-name="1"></check-import>
-            </check>
-            <check system="1">
-                <check-content></check-content>
-                
             </check>
         </Rule>
     </Group>
