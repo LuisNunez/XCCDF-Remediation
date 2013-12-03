@@ -1852,7 +1852,252 @@ NOT || P | F | U | E | N | K | S | I ||
             </xsd:enumeration>
         </xsd:restriction>
     </xsd:simpleType>
-
+ 
+    <!-- XCCDF Dev Remediation Elements -->
+    <xsd:complexType name="remedyImportType" mixed="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en"> Data type for the &lt;xccdf:fix-import&gt; element,
+                which specifies a value that the &lt;xccdf:Benchmark&gt; author wishes to retrieve
+                from the fixing system during remediation of a target system. The @import-name
+                attribute identifies some structure in the fixing system that is then retrieved.
+                The mapping from the values of this attribute to specific fixing system structures
+                is beyond the scope of the XCCDF specification. When the &lt;xccdf:fix-import&gt;
+                element appears in the context of an &lt;xccdf:Rule&gt;, then it should be empty and
+                any content must be ignored. When the &lt;xccdf:fix-import&gt; element appears in
+                the context of an &lt;xccdf:rule-result&gt;, then its body holds the imported value.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:any processContents="skip" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="import-name" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation xml:lang="en">An identifier indicating some structure in the
+                    fixing system to be collected. </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="import-xpath" type="xsd:string" use="optional">
+            <xsd:annotation>
+                <xsd:documentation xml:lang="en">An XPath that is used to select specific values or
+                    structures from the imported structure. This allows further refinement of the
+                    collected data if the imported value takes the form of XML structures.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+    
+    <xsd:complexType name="remedyExportType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en"> Data type for the &lt;xccdf:fix-export&gt; element,
+                which specifies a mapping from an &lt;xccdf:Value&gt; element to a fixing system
+                variable (i.e., external name or id for use by the fixing system). This supports
+                export of tailoring &lt;xccdf:Value&gt; elements from the XCCDF processing
+                environment to the fixing system. The interface between the XCCDF benchmark
+                consumer and the fixing system should support, at a minimum, passing the
+                &lt;xccdf:value&gt; property of the &lt;xccdf:Value&gt; element, but may also
+                support passing the &lt;xccdf:Value&gt; element's @type and @operator
+                properties.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="value-id" type="xsd:NCName" use="required">
+            <xsd:annotation>
+                <xsd:documentation xml:lang="en">The id of the &lt;xccdf:Value&gt; element to
+                    export. </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="export-name" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation xml:lang="en">An identifier indicating some structure in the
+                    fixing system into which the identified &lt;xccdf:Value&gt; element's
+                    properties will be mapped. </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+    
+    <xsd:complexType name="remedyContentRefType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en"> Data type for the &lt;xccdf:fix-content-ref&gt;
+                element, which points to the code for a detached fix in another file. This element
+                has no body, just a couple of attributes: @href and @name. The @name is optional, if
+                it does not appear then this reference is to the entire document.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="href" type="xsd:anyURI" use="required">
+            <xsd:annotation>
+                <xsd:documentation xml:lang="en">Identifies the referenced document containing
+                    fixing instructions. </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="name" type="xsd:string">
+            <xsd:annotation>
+                <xsd:documentation xml:lang="en">Identifies a particular part or element of the
+                    referenced fix document. </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+    </xsd:complexType>
+    
+    <xsd:complexType name="remedyContentType" mixed="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en"> Data type for the &lt;xccdf:fix-content&gt; element.
+                The body of this element holds the actual code of a fix, in the language or system
+                specified by the &lt;xccdf:fix&gt; element’s @system attribute. The body of this
+                element may be any XML, but cannot contain any XCCDF elements. XCCDF tools do not
+                process its content directly but instead pass the content directly to fixing
+                engines. </xsd:documentation>
+        </xsd:annotation>
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <!--  <xsd:any namespace="##other" processContents="skip"/> -->
+            <xsd:element name="sub" type="cdf:subType">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Specifies an &lt;xccdf:Value&gt; or
+                        &lt;xccdf:plain-text&gt; element to be used for text substitution
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="instance" type="cdf:instanceFixType">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Designates a spot where the name of the
+                        instance should be substituted into the fix template to generate the final
+                        fix data. If the @context attribute is omitted, the value of the @context
+                        defaults to “undefined”.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:choice>
+    </xsd:complexType>
+    <!-- XCCDF Dev Remediation Elements -->
+ 
+<!-- Remedy -->
+    
+    <xsd:complexType name="remedyType">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en"> Data type for the &lt;xccdf:check&gt; element. The
+                &lt;xccdf:check&gt; element identifies instructions for tests to determine
+                compliance with the &lt;xccdf:Rule&gt; as well as parameters controlling the
+                reporting of those test results. The &lt;xccdf:check&gt; element must have at least
+                one child element. </xsd:documentation>
+            <xsd:appinfo>
+                <evaluation_documentation>The two axes represent a pairwise combination of results.
+                    Order of evaluation will not matter. Possible results are abbreviated as
+                    follows: P = Pass, F = Fail, U = Unknown, E = Error, N = Not Applicable, K = Not
+                    Checked, S = Not Selected, I = Informational. </evaluation_documentation>
+                <evaluation_chart xml:space="preserve">
+   AND             || P | F | U | E | N | K | S | I ||
+-------------------||-------------------------------||
+          Pass (P) || P | F | U | E | P | P | P | P ||
+          Fail (F) || F | F | F | F | F | F | F | F ||
+       Unknown (U) || U | F | U | U | U | U | U | U ||
+         Error (E) || E | F | U | E | E | E | E | E || 
+ Notapplicable (N) || P | F | U | E | N | N | N | N ||
+    Notchecked (K) || P | F | U | E | N | K | K | K ||
+   Notselected (S) || P | F | U | E | N | K | S | S || 
+ Informational (I) || P | F | U | E | N | K | S | I ||
+------------------------------------------------------</evaluation_chart>
+                <evaluation_chart xml:space="preserve">
+NOT || P | F | U | E | N | K | S | I ||
+----||-------------------------------||
+    || F | P | U | E | N | K | S | I ||
+---------------------------------------</evaluation_chart>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="remedy-import" type="cdf:remedyImportType" minOccurs="0"
+                maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Identifies a value to be retrieved from the
+                        checking system during testing of a target system. This element's body must
+                        be empty within an &lt;xccdf:check&gt;. After the associated check results
+                        have been collected, the result structure returned by the checking engine is
+                        processed to collect the named information. This information is then
+                        recorded in the check-import element in the corresponding
+                        &lt;xccdf:rule-result&gt;.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="remedy-export" type="cdf:remedyExportType" minOccurs="0"
+                maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">A mapping from an &lt;xccdf:Value&gt; element
+                        to a checking system variable (i.e., external name or id for use by the
+                        checking system). This supports export of tailoring values from the XCCDF
+                        processing environment to the checking system.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="remedy-content-ref" minOccurs="0" maxOccurs="unbounded"
+                type="cdf:remedyContentRefType">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Points to code for a detached check in another
+                        location that uses the language or system specified by the
+                        &lt;xccdf:check&gt; element’s @system attribute. If multiple
+                        &lt;xccdf:check-content-ref&gt; elements appear, they represent alternative
+                        locations from which a benchmark consumer may obtain the check content.
+                        Benchmark consumers should process the alternatives in the order in which
+                        they appear in the XML. The first &lt;xccdf:check-content-ref&gt; from which
+                        content can be successfully retrieved should be used.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="remedy-content" minOccurs="0" maxOccurs="1"
+                type="cdf:remedyContentType">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">Holds the actual code of a check, in the
+                        language or system specified by the &lt;xccdf:check&gt; element’s @system
+                        attribute. If both &lt;xccdf:check-content-ref&gt; and
+                        &lt;xccdf:check-content&gt; elements appear in a single &lt;xccdf:check&gt;
+                        element, benchmark consumers should use the &lt;xccdf:check-content&gt;
+                        element only if none of the references can be resolved to provide
+                        content.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="system" type="xsd:anyURI" use="required">
+            <xsd:annotation>
+                <xsd:documentation xml:lang="en">The URI for a checking system. If the checking
+                    system uses XML namespaces, then the system attribute for the system should be
+                    its namespace. </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="negate" type="xsd:boolean" use="optional" default="false">
+            <xsd:annotation>
+                <xsd:documentation xml:lang="en">If set to true, the final result of the
+                    &lt;xccdf:check&gt; is negated according to the truth table given below.
+                </xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="id" type="xsd:NCName" use="optional">
+            <xsd:annotation>
+                <xsd:documentation xml:lang="en">Unique identifier for this element. Optional, but
+                    must be globally unique if present.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="selector" default="" type="xsd:string" use="optional">
+            <xsd:annotation>
+                <xsd:documentation xml:lang="en">This may be referenced from &lt;xccdf:Profile&gt;
+                    selection elements or used during manual tailoring to refine the application of
+                    the &lt;xccdf:Rule&gt;. If no selector values are specified for a given
+                    &lt;xccdf:Rule&gt; by &lt;xccdf:Profile&gt; elements or manual tailoring, all
+                    &lt;xccdf:check&gt; elements with non-empty @selector attributes are ignored. If
+                    an &lt;xccdf:Rule&gt; has multiple &lt;xccdf:check&gt; elements with the same
+                    @selector attribute, each must employ a different checking system, as identified
+                    by the @system attribute of the &lt;xccdf:check&gt; element.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute name="multi-check" type="xsd:boolean" use="optional" default="false">
+            <xsd:annotation>
+                <xsd:documentation xml:lang="en">Applicable in cases where multiple checks are
+                    executed to determine compliance with a single &lt;xccdf:Rule&gt;. This
+                    situation can arise when an &lt;xccdf:check&gt; includes an
+                    &lt;xccdf:check-content-ref&gt; element that does not include a @name attribute.
+                    The default behavior of a nameless &lt;xccdf:check-content-ref&gt; is to execute
+                    all checks in the referenced check content location and AND their results
+                    together into a single &lt;xccdf:rule-result&gt; using the AND truth table
+                    below. This corresponds to a @multi-check attribute value of “false”. If,
+                    however, the @multi-check attribute is set to "true" and a nameless
+                    &lt;xccdf:check-content-ref&gt; is used, the &lt;xccdf:Rule&gt; produces a
+                    separate &lt;xccdf:rule-result&gt; for each check.</xsd:documentation>
+            </xsd:annotation>
+        </xsd:attribute>
+        <xsd:attribute ref="xml:base"/>
+    </xsd:complexType>
+    
+<!-- Remedy --> 
+    
     <xsd:complexType name="checkType">
         <xsd:annotation>
             <xsd:documentation xml:lang="en"> Data type for the &lt;xccdf:check&gt; element. The
