@@ -1337,6 +1337,17 @@
                             </xsd:annotation>
                         </xsd:element>
                     </xsd:choice>
+                    <xsd:element name="remedy" type="cdf:remedyType" minOccurs="0"
+                        maxOccurs="unbounded">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en">The definition of, or a reference
+                                to, the target remediation system needed to bring about compliance with this
+                                &lt;xccdf:Rule&gt;. Sibling &lt;xccdf:check&gt; elements must
+                                have different values for the combination of their @selector and
+                                @system attributes, and must have different values for their @id
+                                attribute (if any).</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
                     <xsd:element name="signature" type="cdf:signatureType" minOccurs="0"
                         maxOccurs="1">
                         <xsd:annotation>
@@ -1853,7 +1864,7 @@ NOT || P | F | U | E | N | K | S | I ||
         </xsd:restriction>
     </xsd:simpleType>
  
-    <!-- XCCDF Dev Remediation Elements -->
+ <!-- XCCDF Dev Remedy types -->
     <xsd:complexType name="remedyImportType" mixed="true">
         <xsd:annotation>
             <xsd:documentation xml:lang="en"> Data type for the &lt;xccdf:fix-import&gt; element,
@@ -1963,7 +1974,7 @@ NOT || P | F | U | E | N | K | S | I ||
             </xsd:element>
         </xsd:choice>
     </xsd:complexType>
-    <!-- XCCDF Dev Remediation Elements -->
+<!-- XCCDF Dev Remedy types -->
  
 <!-- Remedy -->
     
