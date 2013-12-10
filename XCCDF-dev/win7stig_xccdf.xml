@@ -56,14 +56,14 @@
             <!-- Exercising fix-export, fix-content-ref -->
             <fix>
               <fix-export value-id="xccdf_org.mitre_value_maximum_application_log_size_var" export-name="maximum_application_log_size_var"/>
-              <fix-content-ref name="maximum_application_log_size" href="mod-reg.ps1"/>
+                <fix-content-ref name="mod-reg" href="PowerShell_STIG_fix.ps1"/>
               <fix-content> 
                   Set-ItemProperty -path registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application -Name MaxSize -Type DWord 
                   -Value <sub idref="xccdf_org.mitre_value_maximum_application_log_size_var"/>
               </fix-content>
             </fix>
-            <!-- Exercising fix-content and sub -->
-            <fix id="F-29830r1_fix" system="urn:xccdf:fix:system:powershell">
+<!-- Exercising fix-content and sub -->
+            <fix id="F-29830r1_fix" system="urn:xccdf:fix:system:powershell" complexity="low" disruption="low" strategy="configure">
                 <fix-content> 
                     Set-ItemProperty -path registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application -Name MaxSize -Type DWord 
                     -Value <sub idref="xccdf_org.mitre_value_maximum_application_log_size_var"/>
