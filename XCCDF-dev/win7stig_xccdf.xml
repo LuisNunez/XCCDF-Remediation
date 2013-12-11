@@ -54,7 +54,7 @@
             </fix>
 <!-- Dev New Elements-->
             <!-- Exercising fix-export, fix-content-ref -->
-            <fix>
+            <fix id="F-29830r1_fix" system="urn:xccdf:fix:system:powershell" complexity="low" disruption="low" reboot="false" strategy="configure">
               <fix-export value-id="xccdf_org.mitre_value_maximum_application_log_size_var" export-name="maximum_application_log_size_var"/>
                 <fix-content-ref name="mod-reg" href="PowerShell_STIG_fix.ps1"/>
               <fix-content> 
