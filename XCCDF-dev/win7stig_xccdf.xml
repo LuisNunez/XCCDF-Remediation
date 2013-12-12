@@ -77,12 +77,12 @@
             </fix>
 <!-- Assessment -->
             <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+                <check-import import-name="posh-results"/>
                 <check-export value-id="xccdf_org.mitre_value_maximum_application_log_size_var" export-name="oval:mil.disa.fso.windows:var:383400"/>
                 <check-content-ref name="oval:mil.disa.fso.windows:def:3834" href="U_Windows_7_V1R16_STIG_Benchmark-oval.xml"/>
-                <check-content></check-content>
-            </check>
-            <check system="">
-                <check-import import-name="1"></check-import>
+                <check-content>
+                    Get-ChildItem -path registry::HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog -OutVariable posh-results
+                </check-content>
             </check>
         </Rule>
     </Group>
