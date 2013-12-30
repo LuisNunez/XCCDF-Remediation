@@ -13,7 +13,10 @@
     <description>Example for new remediation elements with PowerShell scripts</description>
     <platform idref="cpe:/o:microsoft:windows_7"/>
     <version>.1</version>
-
+    <Profile id="xccdf_org.mitre_profile_test">
+        <title>test profile</title>
+        <select idref="xccdf_org.mitre_group_V-26579" selected="true"/>
+    </Profile>
     <Value id="xccdf_org.mitre_value_maximum_application_log_size_var" type="number" operator="equals">
         <title>Maximum Application Log Size</title>
         <description>The value defines the maximum size (in KB) of the application log.</description>
