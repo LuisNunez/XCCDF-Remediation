@@ -220,3 +220,5 @@ pip-log.txt
 results.xml
 system-characteristics.xml
 *.html
+oval-common-schema.xsd
+oval-definitions-schema.xsd
