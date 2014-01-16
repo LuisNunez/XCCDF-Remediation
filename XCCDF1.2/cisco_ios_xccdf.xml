@@ -85,7 +85,7 @@
                 password" from global configuration mode. </fixtext>
             <fix id="fix_enable_secret" system="urn:xccdf:fix:commands" complexity="low" disruption="low" strategy="enable" reboot="false" > enable secret 4 </fix>
             <check id="check_enable_secret" system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-                <check-content-ref name="" href=""/>
+                <check-content-ref name="oval:com.c3isecurity.oval:def:1" href="cisco-oval.xml"/>
             </check>
         </Rule>
         <Rule id="xccdf_com.c3isecurity_rule_service_password-encryption" selected="false">
