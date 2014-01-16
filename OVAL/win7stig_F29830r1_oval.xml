@@ -31,7 +31,7 @@
       <criterion test_ref="oval:mil.disa.fso.windows:tst:383400" comment="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application!MaxSize value equals or is greater than variable"/>
     </criteria>
   </definition>
-</definitions>
+ </definitions>
 <!-- Tests -->
 <tests>
   <registry_test xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#windows" id="oval:mil.disa.fso.windows:tst:383400" version="2" check_existence="at_least_one_exists" check="all" comment="HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application!MaxSize value equals or is greater than variable">
