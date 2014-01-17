@@ -96,6 +96,9 @@
                 password-encryption" from the global configuration mode. </fixtext>
             <fix id="fix_service_password_encryption" system="urn:xccdf:fix:commands">service
                 password-encryption</fix>
+            <check id="check_service_password_encryption" system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+                <check-content-ref name="oval:com.c3isecurity.oval:def:2" href="cisco-oval.xml"/>
+            </check>
         </Rule>
     </Group>
 </Benchmark>
